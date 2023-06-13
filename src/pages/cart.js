@@ -14,7 +14,7 @@ function CartPage() {
 
   const [isRedirecting, setIsRedirecting] = useState(false);
 
-  const onCheckout = async () => {
+  async function onCheckout() {
     if (cartCount > 0) {
       try {
         setIsRedirecting(true);
@@ -31,7 +31,7 @@ function CartPage() {
         setIsRedirecting(false);
       }
     }
-  };
+  }
 
   return (
     <div className="container xl:max-w-screen-xl mx-auto py-12 px-6">
