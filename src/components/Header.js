@@ -1,8 +1,9 @@
 import React from "react";
 import Logo from "./Logo";
 import Link from "next/link";
-import { AiFillShopping } from "react-icons/ai";
 import { useShoppingCart } from "use-shopping-cart";
+import { motion } from "framer-motion";
+import { FaShoppingCart } from "react-icons/fa";
 
 function Header() {
   const { formattedTotalPrice, cartCount } = useShoppingCart();
@@ -17,11 +18,15 @@ function Header() {
         >
           <div className="relative flex items-center">
             {cartCount > 0 && <p className="text-lg">{formattedTotalPrice}</p>}
-            <AiFillShopping className="w-8 h-8 flex-shrink-0" />
+            <FaShoppingCart className="w-7 h-7 flex-shrink-0" />
             {cartCount > 0 && (
-              <p className="text-sm text-white absolute right-1 top-1 bg-rose-600 rounded-full px-1">
+              <motion.p
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                className="text-sm text-white absolute right-0 top-0 bg-rose-600 rounded-full px-1"
+              >
                 {cartCount}
-              </p>
+              </motion.p>
             )}
           </div>
         </Link>
