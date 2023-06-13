@@ -3,7 +3,6 @@ import ProductCard from "@/components/ProductCard";
 import { stripe } from "@/utils/stripe";
 
 export default function Home({ products }) {
-  console.log(products);
   return (
     <div>
       <Banner />

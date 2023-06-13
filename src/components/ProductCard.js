@@ -17,7 +17,7 @@ function ProductCard({ product }) {
   return (
     <Link
       href={`/products/${product.id}`}
-      className="border-2 rounded-md group overflow-hidden"
+      className="border-1 shadow rounded-md group overflow-hidden bg-white"
     >
       <div className="relative w-full h-64">
         <Image
@@ -28,8 +28,10 @@ function ProductCard({ product }) {
           className="object-contain bg-white"
         />
       </div>
-      <div className="p-6 bg-white flex flex-col h-full ">
-        <p className="font-bold text-gray-800 text-lg">{product.name}</p>
+      <div className="px-4 pb-3 bg-white flex flex-col ">
+        <div>
+          <p className="font-bold text-gray-800 text-lg">{product.name}</p>
+        </div>
         <div className="flex justify-between pt-4 items-center">
           <div className="ml-1">
             <p className="text-sm">Price</p>

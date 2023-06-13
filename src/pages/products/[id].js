@@ -21,7 +21,13 @@ function ProductPage({ product }) {
     <div className="container lg:max-w-screen-lg mx-auto py-12 px-6">
       <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-12">
         <div className="relative w-72 h-72 sm:w-96 sm:h-96">
-          <Image src={product.image} alt={product.name} fill contain />
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            contain
+            className="rounded-md shadow"
+          />
         </div>
 
         <div className="w-full flex-1 max-w-md border border-opacity-50 rounded-md shadow-lg p-6 bg-white">
@@ -34,6 +40,11 @@ function ProductPage({ product }) {
                 currency: product.currency,
               })}
             </p>
+          </div>
+
+          <div className="mt-4 border-t pt-4">
+            <p className="text-gray-500">Description:</p>
+            <p className="font-semibold">{product.description}</p>
           </div>
 
           <div className="mt-4 border-t pt-4">
@@ -56,7 +67,10 @@ function ProductPage({ product }) {
             </div>
           </div>
 
-          <button onClick={onAddToCart} className="w-full mt-4 bg-teal-600 hover:bg-teal-700 focus:ring-4 focus:ring-opacity-50 focus:ring-teal-600 transition duration-200 text-white text-sm px-4 py-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed">
+          <button
+            onClick={onAddToCart}
+            className="w-full mt-4 bg-teal-600 hover:bg-teal-700 focus:ring-4 focus:ring-opacity-50 focus:ring-teal-600 transition duration-200 text-white text-sm px-4 py-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+          >
             Add to cart
           </button>
         </div>
