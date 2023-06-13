@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useShoppingCart } from "use-shopping-cart";
 import { toast } from "react-hot-toast";
 
-function ProductPage({ product }) {
+export default function ProductPage({ product }) {
   const [count, setCount] = useState(1);
   const { addItem } = useShoppingCart();
 
@@ -79,8 +79,6 @@ function ProductPage({ product }) {
   );
 }
 
-export default ProductPage;
-
 export async function getStaticPaths() {
   const inventory = await stripe.products.list();
   const paths = inventory.data.map((product) => ({
@@ -103,7 +101,7 @@ export async function getStaticProps({ params }) {
     const price = product.default_price;
     return {
       currency: price.currency,
-      id: price.id,
+      id: product.id,
       name: product.name,
       price: price.unit_amount,
       image: product.images[0],
@@ -111,6 +109,13 @@ export async function getStaticProps({ params }) {
     };
   });
   const product = products.find((product) => product.id === params.id);
+
+  if (!product) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
       product,
