@@ -26,7 +26,7 @@ export async function getStaticProps() {
     const price = product.default_price;
     return {
       currency: price.currency,
-      id: price.id,
+      id: product.id,
       name: product.name,
       price: price.unit_amount,
       image: product.images[0],
